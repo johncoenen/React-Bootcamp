@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>First Friends List - example 2</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src='https://unpkg.com/babel-standalone@6/babel.min.js'></script>
+</head>
+
+<body>
+    <div id='app'></div>
+
+    <script type='text/babel'>
+    function FriendsList (props) {
+      return (
+        <ul>
+          {props.list.map((name) => (
+            <li key={name}>
+              {name}
+            </li>
+          ))}
+        </ul>
+      )
+    }
+
+		class App extends React.Component {// use a class component  instread of a function component(ES6)
+
+//    function App () {
+//      const friends = ['Jordyn', 'Mikenzi', 'Jake']
+//      return (
+//        <div>
+//          <FriendsList list={friends} />
+//        </div>
+//      )
+//    }
+    
+			constructor(props){
+				super(props)
+
+				this.state = {
+					friends: ['Barry', 'Jerry', 'Larry']
+				}
+			}
+			render() {
+				return (
+					<div>
+					  <FriendsList list={this.state.friends} />
+					</div>
+				)
+			}
+		}
+
+    ReactDOM.render(
+      <App />,
+      document.getElementById('app')
+    )
+  </script>
+</body>
+
+</html>
